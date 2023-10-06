@@ -1,3 +1,4 @@
+@echo off
 ::
 :: Compiles Lua
 ::
@@ -16,14 +17,14 @@ set vsdevcmd="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\To
 
 :: Start the search and variable execution Process
 :start_me
-    if exist %vsdevcmd% (
+    if not exist %vsdevcmd% (
+		echo. There is no Visual Studio 2022 Community edition installed.
+		echo. Please first Download VS-2022 Community edition.
+		goto end
+    ) else (
         echo. Executing VsDevCmd.bat variables
         call %vsdevcmd%
         echo.
-    ) else (
-        echo. There is no Visual Studio 2022 Community edition installed.
-		echo. Please first Download VS-2022 Community edition.
-		goto end
     )
 
 :: Identify the target architecture
