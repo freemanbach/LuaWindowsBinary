@@ -17,14 +17,16 @@ set vsdevcmd="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\To
 
 :: Start the search and variable execution Process
 :start_me
-    if not exist %vsdevcmd% (
-		echo. There is no Visual Studio 2022 Community edition installed.
-		echo. Please first Download VS-2022 Community edition.
-		goto end
+  if not exist %vsdevcmd% (
+    echo. There is no Visual Studio 2022 Community edition installed.
+    echo. Please first Download and install VS-2022 Community edition.
+    echo. https://visualstudio.microsoft.com/vs/compare/
+    goto end
     ) else (
-        echo. Executing VsDevCmd.bat variables
-        call %vsdevcmd%
-        echo.
+      echo. Executing VsDevCmd.bat variables
+      call %vsdevcmd%
+      echo.
+      echo.
     )
 
 :: Identify the target architecture
@@ -42,6 +44,12 @@ if /i "%ARCH%"=="" goto end
 :: Move down into 'src'
 @pushd src
 
+:: This batch file will show details Windows 10
+echo.
+echo. ============================
+echo. Compiling Object File
+echo. ============================
+echo.
 :: Clean up files from previous builds
 @if EXIST *.o @del *.o
 @if EXIST *.obj @del *.obj
@@ -55,6 +63,15 @@ if /i "%ARCH%"=="" goto end
 @ren lua.obj lua.o
 @ren luac.obj luac.o
 
+echo.
+echo. Finished Compiling
+echo. 
+
+echo.
+echo. ============================
+echo. Linking Object Files
+echo. ============================
+echo.
 :: Link up all the other .objs into a .lib and .dll file
 @LINK /DLL /IMPLIB:lua.lib /OUT:lua.dll *.obj
 
@@ -69,6 +86,10 @@ if /i "%ARCH%"=="" goto end
 
 :: Move back up out of 'src'
 @popd
+
+echo.
+echo. Finished Linking Object Files
+echo. 
 
 :: Copy the library and executable files out from 'src'
 @copy /Y src\lua.exe lua.exe
