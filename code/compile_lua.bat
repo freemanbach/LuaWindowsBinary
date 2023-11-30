@@ -96,5 +96,9 @@ echo.
 @copy /Y src\luac.exe luac.exe
 @copy /Y src\lua.dll lua.dll
 
+:: Deleting the files in src
+@del /q /f src\*.exe
+@del /q /f src\*.dll
+
 :: End local variable scope
 :end
