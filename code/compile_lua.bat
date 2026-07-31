@@ -14,6 +14,7 @@
 setlocal
 
 set vsdevcmd="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat"
+set vsdev2026="C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Tools\VsDevCmd.bat"
 
 :: Start the search and variable execution Process
 :start_me
