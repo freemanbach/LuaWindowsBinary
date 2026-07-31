@@ -1,4 +1,4 @@
-#NSIS Modern User Interface
+#NSIS MUI
 
 #--------------------------------
 #Include Modern UI
@@ -12,12 +12,12 @@
 
   #Name and file
   Name "Lua Installer"
-  OutFile "lua_v5.4.6.exe"
+  OutFile "lua_v5.5.0.exe"
   Unicode True
   AllowRootDirInstall True
 
   #Default installation folder
-  InstallDir "$PROFILE\lua_5.4.6"
+  InstallDir "$PROFILE\lua_5.5.0"
   
   RequestExecutionLevel admin
 
@@ -26,7 +26,7 @@
 #--------------------------------
 
   !define MUI_HEADERIMAGE
-  !define MUI_HEADERIMAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Header\nsis.bmp" ; optional
+  !define MUI_HEADERIMAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Header\nsis.bmp"
   !define MUI_ABORTWARNING
 
 #--------------------------------
@@ -58,7 +58,7 @@ Section "Default" SecDefault
   SetOutPath "$INSTDIR"
   
   #ADD YOUR OWN FILES HERE...
-  File /r lua-5.4.6\*.*
+  File /r lua-5.5.0\*.*
 
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
