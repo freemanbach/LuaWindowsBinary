@@ -42,6 +42,10 @@ if /i "%ARCH%"=="" goto end
 :: the Below portion was copied from here:
 :: https://github.com/Pharap/CompilingLua/blob/master/Compile.bat
 
+
+:: Make a Directory for exe and dll files
+@mkdir bin
+
 :: Move down into 'src'
 @pushd src
 
@@ -64,9 +68,9 @@ echo.
 @ren lua.obj lua.o
 @ren luac.obj luac.o
 
-echo.
+echo. ===========================
 echo. Finished Compiling
-echo. 
+echo. ===========================
 
 echo.
 echo. ============================
@@ -88,18 +92,28 @@ echo.
 :: Move back up out of 'src'
 @popd
 
-echo.
+echo. ===============================
 echo. Finished Linking Object Files
-echo. 
+echo. ===============================
 
 :: Copy the library and executable files out from 'src'
 @copy /Y src\lua.exe lua.exe
 @copy /Y src\luac.exe luac.exe
 @copy /Y src\lua.dll lua.dll
 
+
+echo. =============================
+echo. Copy binary files to Bin dir
+echo. =============================
+@copy /Y lua.exe .\bin
+@copy /Y luac.exe .\bin
+@copy /Y lua.dll .\bin
+
 :: Deleting the files in src
 @del /q /f src\*.exe
+@del /q /f *.exe
 @del /q /f src\*.dll
+@del /q /f *.dll
 
 :: End local variable scope
 :end
