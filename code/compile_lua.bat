@@ -56,7 +56,7 @@ set vsdev26="C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Tools
 :: the Below portion was copied from here:
 :: https://github.com/Pharap/CompilingLua/blob/master/Compile.bat
 
-: handle_file
+:handle_file
   echo.
   echo. ============================
   echo.  Making directory
