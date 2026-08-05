@@ -20,22 +20,26 @@ set vsdev26="C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Tools
 :check_vs26
   if exist %vsdev26% (
     call %vsdev26%
+    goto arch_type
   ) else (
         echo.
         echo. There is no Visual Studio 2026 Community edition installed.
         echo. Please first Download and install VS-2026 Community edition.
         echo. https://visualstudio.microsoft.com/vs/compare/
+        echo.
       goto check_vs22
   )
 
 :check_vs22 
   if exist %vsdev22% (
     call %vsdev22%
+    goto arch_type
     ) else (
         echo.
         echo. There is no Visual Studio 2022 Community edition installed.
         echo. Please first Download and install VS-2022 Community edition.
         echo. https://visualstudio.microsoft.com/vs/compare/
+        echo.
         goto end
     )
 
